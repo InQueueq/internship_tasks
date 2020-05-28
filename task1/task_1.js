@@ -1,7 +1,7 @@
 function taskv1(st) {
     result = [];
     n_variables = st.length -1;
-    for(i =0;i < Math.pow(n_variables,2);i++) {
+    for(i =0;i < Math.pow(2,n_variables);i++) {
         pad_list = st.split('');
         dots_to_insert = [];
         for(j=0; j < n_variables; j++) {
@@ -9,7 +9,7 @@ function taskv1(st) {
                 dots_to_insert.push('.');
             }
             else {
-                    dots_to_insert.push('');
+                dots_to_insert.push('');
             }
         }
         for(k =0;k<dots_to_insert.length;k++){
@@ -35,8 +35,7 @@ function taskv2(st,res,offset,string_builder){
 }
 
 builder = "";
-st = "abc"
-depth = st.length-1
+st = "abcde"
 res = []
 console.log(taskv1(st));
 console.log(taskv2(st,res,0,builder));
