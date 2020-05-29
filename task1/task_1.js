@@ -1,5 +1,29 @@
 const fs = require("fs");
 
+// Task with reduce implementation
+function taskv0(st) {
+    result = [];
+    n_variables = st.length -1;
+    for(i =0;i < Math.pow(2,n_variables);i++) {
+        pad_list = st.split('');
+        dots_to_insert = [];
+        for(j=0; j < n_variables; j++) {
+            if (((i>>j)&1) === 1) {
+                dots_to_insert.push('.');
+            }
+            else {
+                dots_to_insert.push('');
+            }
+        }
+        for(k =0;k<dots_to_insert.length;k++){
+            pad_list[k] = pad_list[k]+dots_to_insert[k];
+        }
+        result.push(pad_list.reduce((accum, curr)=>accum+curr));
+    }
+    return result;
+}
+
+// Task with join implementation
 function taskv1(st) {
     result = [];
     n_variables = st.length -1;
@@ -21,8 +45,8 @@ function taskv1(st) {
     }
     return result;
 }
-
-function taskv2(st,res,offset,string_builder=""){
+// Recursive implementation
+function taskv2(st,res=[],offset=0,string_builder=""){
     if(offset >= st.length-1){
         res.push(string_builder+st[st.length-1]);
         return res;
@@ -36,36 +60,36 @@ function taskv2(st,res,offset,string_builder=""){
     return res;
 }
 
-st = "abcdeabcdeabcdeac"
+st = "abcdeabcdeabcdeabcde";
 
-res = []
+// Measure memory consumption
+const memory_measure = function(task_func, num_of_iterations,param,memory=0,output_filename){
+    for(f = 0;f < num_of_iterations; f++){
+        mem = process.memoryUsage().heapUsed;
+        task_func(param)
+        memory += ((process.memoryUsage().heapUsed - mem) / 1024 / 1024);
+        fs.appendFileSync(output_filename, memory.toString().replace('.',',') + '\n');
+    }
+}
 
+// Measure runtime
+const time_measure = function (task_func,num_of_iterations,param) {
+    for(q = 0;q<num_of_iterations;q++){
+        console.time();
+        task_func(param);
+        console.timeEnd();
+    }
+}
+// Parse text from console->yourFile
+const parse = function (filename) {
+    fs.readFile(filename, 'utf8', function(err, contents) {
+        contents = contents.split('\n').map(content => content.split(' '));
+        for(i = 0;i<contents.length-1;i++){
+            fs.appendFileSync("parsedText.txt",contents[i][1].split('.')[0].toString()+'\n');
+        }
+    });
 
-//memory1 =0;
-//memory2 =0;
-
-//for(f = 0;f < 100; f++){
-    //mem1 = process.memoryUsage().heapUsed;
-    //taskv1(st);
-    //memory1 += ((process.memoryUsage().heapUsed - mem1) / 1024 / 1024);
-    //fs.appendFileSync("memoryImper.txt", memory1.toString().replace('.',',') + '\n');
-//}
-
-// for(p = 0;p < 100; p++){
-//     mem2 = process.memoryUsage().heapUsed;
-//     taskv2(st,res,0);
-//     memory2 += ((process.memoryUsage().heapUsed - mem2) / 1024 / 1024);
-//     fs.appendFileSync("memoryRecurs.txt", memory2.toString().replace('.',',') + '\n');
-// }
-
-
-// fs.readFile('toParse.txt', 'utf8', function(err, contents) {
-//     contents = contents.split('\r\n');
-//     for(i =0;i<contents.length;i++){
-//         contents[i] = contents[i].split(' ')[1];
-//     }
-//     fs.appendFileSync("parsedText.txt",contents.join('\n'));
-// });
-
-
-
+}
+//parse("timinglog.txt");
+//time_measure(taskv2,100,st);
+//memory_measure(taskv1,100,st,0,"memoryImper.txt")
