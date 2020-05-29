@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 function taskv1(st) {
     result = [];
     n_variables = st.length -1;
@@ -20,7 +22,7 @@ function taskv1(st) {
     return result;
 }
 
-function taskv2(st,res,offset,string_builder){
+function taskv2(st,res,offset,string_builder=""){
     if(offset >= st.length-1){
         res.push(string_builder+st[st.length-1]);
         return res;
@@ -34,9 +36,36 @@ function taskv2(st,res,offset,string_builder){
     return res;
 }
 
-builder = "";
-st = "abcde"
+st = "abcdeabcdeabcdeac"
+
 res = []
-console.log(taskv1(st));
-console.log(taskv2(st,res,0,builder));
+
+
+//memory1 =0;
+//memory2 =0;
+
+//for(f = 0;f < 100; f++){
+    //mem1 = process.memoryUsage().heapUsed;
+    //taskv1(st);
+    //memory1 += ((process.memoryUsage().heapUsed - mem1) / 1024 / 1024);
+    //fs.appendFileSync("memoryImper.txt", memory1.toString().replace('.',',') + '\n');
+//}
+
+// for(p = 0;p < 100; p++){
+//     mem2 = process.memoryUsage().heapUsed;
+//     taskv2(st,res,0);
+//     memory2 += ((process.memoryUsage().heapUsed - mem2) / 1024 / 1024);
+//     fs.appendFileSync("memoryRecurs.txt", memory2.toString().replace('.',',') + '\n');
+// }
+
+
+// fs.readFile('toParse.txt', 'utf8', function(err, contents) {
+//     contents = contents.split('\r\n');
+//     for(i =0;i<contents.length;i++){
+//         contents[i] = contents[i].split(' ')[1];
+//     }
+//     fs.appendFileSync("parsedText.txt",contents.join('\n'));
+// });
+
+
 
