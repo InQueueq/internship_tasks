@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="327672c9-19ca-49a7-898c-4ef7024e17ce" name="Default Changelist" comment="" />
+    <list default="true" id="327672c9-19ca-49a7-898c-4ef7024e17ce" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task2/main_script.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/task2/util.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/deadline_extension_test.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/deadline_extension_test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/deadline_minimum.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/pricetest.doc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/pricetest.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/test_data.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_files/test_to_compare_with_site.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,8 +40,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../expresstest" />
+    <property name="javascript.nodejs.core.library.configured.version" value="12.16.3" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/task2" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Programming\internship\test_files" />
+      <recent name="D:\Programming\internship" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Programming\internship\task2" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -32,11 +66,23 @@
       <option name="presentableId" value="Default" />
       <updated>1590733704535</updated>
       <workItem from="1590733706167" duration="12000" />
+      <workItem from="1591363691082" duration="3189000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1590733714424">

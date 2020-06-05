@@ -1,0 +1,20 @@
+{
+  "name": "internship",
+  "version": "1.0.0",
+  "description": "",
+  "main": "task_1.js",
+  "scripts": {
+    "start": "node task_1.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "letter-count": "^2.8.9",
+    "node-gyp": "^5.1.1"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
+  }
+}
