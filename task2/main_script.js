@@ -2,6 +2,8 @@ const path = require('path');
 const lc = require('letter-count');
 
 const freeExtensions = [".doc","docx",".rtf"];
+const workingDayEnd = 19;
+const workingDayStart = 10;
 const languages = {
     ua:{
         name: "Ukrainian",
@@ -36,11 +38,7 @@ function calculateOrderPrice(count, language, multiplier) {
     return Math.round(100 * price * multiplier) / 100;
 }
 
-function calculateDeadline(count, language, multiplier, startDate = new Date()){
-    const workingDayEnd = 19;
-    const workingDayStart = 10;
-
-    let hoursNeeded = Math.round(getHoursNeeded(count, language, multiplier));
+function calculateDeadline(hoursNeeded, startDate = new Date()){
     while(true){
         if(startDate.getHours() > workingDayEnd){
             startDate.setDate(startDate.getDate() + 1);
@@ -58,14 +56,39 @@ function calculateDeadline(count, language, multiplier, startDate = new Date()){
 
         const hoursToEndDay = workingDayEnd - startDate.getHours();
         if(hoursNeeded < hoursToEndDay){
-            startDate.setHours(startDate.getHours() + hoursNeeded,0,0)
+            startDate.setHours(startDate.getHours() + hoursNeeded,0,0);
             return startDate;
         }
-
         hoursNeeded -= hoursToEndDay;
         startDate.setDate(startDate.getDate() + 1);
         startDate.setHours(10,0,0);
     }
+}
+
+// recursive version of the same function as above
+function calculateDeadlineRecursive(hoursNeeded, startDate = new Date()){
+    if(startDate.getHours() > workingDayEnd){
+        startDate.setDate(startDate.getDate() + 1);
+        startDate.setHours(10,0,0);
+        return calculateDeadlineRecursive(hoursNeeded, startDate);
+    }
+    if (startDate.getDay() === 6 || startDate.getDay() === 0) {
+        startDate.setDate(startDate.getDate() + 1);
+        startDate.setHours(10,0,0);
+        return calculateDeadlineRecursive(hoursNeeded, startDate);
+    }
+    if(startDate.getHours() < workingDayStart){
+        startDate.setHours(10,0,0);
+    }
+    const hoursToEndDay = workingDayEnd - startDate.getHours();
+    if(hoursNeeded < hoursToEndDay){
+        startDate.setHours(startDate.getHours() + hoursNeeded,0,0)
+        return startDate;
+    }
+    hoursNeeded -= hoursToEndDay;
+    startDate.setDate(startDate.getDate() + 1);
+    startDate.setHours(10,0,0);
+    return calculateDeadlineRecursive(hoursNeeded, startDate);
 }
 
 // function main(){
@@ -77,14 +100,15 @@ function calculateDeadline(count, language, multiplier, startDate = new Date()){
 //     const isExpensive = !freeExtensions.includes(extension);
 //     const timeMultiplier = isExpensive ? 1.2 : 1.0;
 //     const priceMultiplier = isExpensive ? 1.2 : 1.0;
-//     const orderPrice = calculateOrderPrice(14136, language,priceMultiplier);
-//     const deadline = calculateDeadline(1122, language, timeMultiplier);
+//     const orderPrice = calculateOrderPrice(500000, language,priceMultiplier);
+//     const hoursNeeded = getHoursNeeded(500000, language, timeMultiplier);
 //
-//
+//     const deadline = calculateDeadline(hoursNeeded);
+//     const deadlineRec = calculateDeadlineRecursive(hoursNeeded);
+//     console.log(deadline)
+//     console.log(deadlineRec)
 // }
-
-
-
-
+//
+// main();
 
 module.exports = {calculateOrderPrice : calculateOrderPrice, calculateDeadline: calculateDeadline, languages : languages}
