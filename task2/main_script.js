@@ -91,24 +91,24 @@ function calculateDeadlineRecursive(hoursNeeded, startDate = new Date()){
     return calculateDeadlineRecursive(hoursNeeded, startDate);
 }
 
-// function main(){
-//     const text = '../test_files/test_to_compare_with_site.doc';
-//     const isFile = true;
-//     const language = languages.en;
-//     const extension = path.extname(text);
-//     const count = isFile ? lc.countFromFile(text).chars : text.length;
-//     const isExpensive = !freeExtensions.includes(extension);
-//     const timeMultiplier = isExpensive ? 1.2 : 1.0;
-//     const priceMultiplier = isExpensive ? 1.2 : 1.0;
-//     const orderPrice = calculateOrderPrice(500000, language,priceMultiplier);
-//     const hoursNeeded = getHoursNeeded(500000, language, timeMultiplier);
-//
-//     const deadline = calculateDeadline(hoursNeeded);
-//     const deadlineRec = calculateDeadlineRecursive(hoursNeeded);
-//     console.log(deadline)
-//     console.log(deadlineRec)
-// }
-//
-// main();
+function main(){
+    const text = '../test_files/test_to_compare_with_site.doc';
+    const isFile = true;
+    const language = languages.en;
+    const extension = path.extname(text);
+    const count = isFile ? lc.countFromFile(text).chars : text.length;
+    const isExpensive = !freeExtensions.includes(extension);
+    const timeMultiplier = isExpensive ? 1.2 : 1.0;
+    const priceMultiplier = isExpensive ? 1.2 : 1.0;
+    const orderPrice = calculateOrderPrice(50000, language,priceMultiplier);
+    const hoursNeeded = getHoursNeeded(50000, language, timeMultiplier);
+
+    const deadline = calculateDeadline(hoursNeeded);
+    const deadlineRec = calculateDeadlineRecursive(hoursNeeded);
+    console.log(deadline)
+    console.log(deadlineRec)
+}
+
+main();
 
 module.exports = {calculateOrderPrice : calculateOrderPrice, calculateDeadline: calculateDeadline, languages : languages}
